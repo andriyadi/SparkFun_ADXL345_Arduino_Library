@@ -819,3 +819,13 @@ void print_byte(byte val){
 		Serial.print(val >> i & 1, BIN);
 	}
 }
+
+
+//by Andri
+void ADXL345::dataReadyINT(bool status) {
+	setInterrupt( ADXL345_INT_DATA_READY_BIT, status? 1: 0);
+}
+
+void ADXL345::setDataReadyInterruptMapping(int intNo) {
+	setInterruptMapping( ADXL345_INT_DATA_READY_BIT,   intNo == 1? ADXL345_INT1_PIN: ADXL345_INT2_PIN );
+}
